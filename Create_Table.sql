@@ -4,8 +4,8 @@ CREATE SCHEMA IF NOT EXISTS "View";
 CREATE SCHEMA IF NOT EXISTS "Proc";
 
 --Drop tables in reverse order due to foreign key constraints
-DROP TABLE IF EXISTS "Table"."Ref_Assessment_Type"
-DROP TABLE IF EXISTS "Table"."Ref_Question_Set"
+DROP TABLE IF EXISTS "Table"."Ref_Assessment_Type";
+DROP TABLE IF EXISTS "Table"."Ref_Question_Set";
 
 CREATE TABLE "Table"."Ref_Question_Set" (
     "Import_Date" DATE NOT NULL
@@ -42,4 +42,30 @@ INSERT INTO "Table"."Ref_Question_Set" (
     , CAST(NOW() AS TIME) AS "Import_Time"
     , USER AS "Added_By"
     , "Customer Experience" AS "Name"
+);
+
+INSERT INTO "Table"."Ref_Assessment_Type" (
+    "Import_Date"
+    , "Import_Time"
+    , "Added_By"
+    , "Question_Set"
+    , "Name"
+) VALUES (
+    CAST(NOW AS DATE) AS "Import_Date"
+    , CAST(NOW() AS TIME) AS "Import_Time"
+    , USER AS "Added_By"
+    , 1 AS "Question_Set"
+    , "Self Assessment" AS "Name"
+), (
+    CAST(NOW AS DATE) AS "Import_Date"
+    , CAST(NOW() AS TIME) AS "Import_Time"
+    , USER AS "Added_By"
+    , 2 AS "Question_Set"
+    , "Self Assessment" AS "Name"
+), (
+    CAST(NOW AS DATE) AS "Import_Date"
+    , CAST(NOW() AS TIME) AS "Import_Time"
+    , USER AS "Added_By"
+    , 2 AS "Question_Set"
+    , "Manager Assessment" AS "Name"
 );
