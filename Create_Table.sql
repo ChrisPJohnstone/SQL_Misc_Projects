@@ -11,7 +11,7 @@ CREATE TABLE "Table"."Ref_Question_Set" (
     "Import_Date" DATE NOT NULL
     , "Import_Time" TIME NOT NULL
     , "Added_By" VARCHAR(100) NOT NULL
-    , "Question_Set" INT IDENTITY NOT NULL PRIMARY KEY
+    , "Question_Set" INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY
     , "Name" VARCHAR(100) NOT NULL
     , "Notes" VARCHAR(1000) NULL
 );
@@ -22,7 +22,7 @@ CREATE TABLE "Table"."Ref_Assessment_Type" (
     , "Added_By" VARCHAR(100) NOT NULL
     , "Question_Set" INT NOT NULL
     , CONSTRAINT FOREIGN KEY("Question_Set") REFERENCES "Ref_Question_Set"("Question_Set")
-    , "Assessment_Type" INT IDENTITY NOT NULL PRIMARY KEY
+    , "Assessment_Type" INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY
     , "Name" VARCHAR(100) NOT NULL
     , "Notes" NOT NULL
 );
@@ -33,15 +33,15 @@ INSERT INTO "Table"."Ref_Question_Set" (
     , "Added_By"
     , "Name"
 ) VALUES (
-    CAST(NOW AS DATE) AS "Import_Date"
-    , CAST(NOW() AS TIME) AS "Import_Time"
-    , USER AS "Added_By"
-    , "Compliance" AS "Name"
+    CAST(NOW AS DATE)
+    , CAST(NOW() AS TIME)
+    , USER
+    , "Compliance"
 ), (
-    CAST(NOW AS DATE) AS "Import_Date"
-    , CAST(NOW() AS TIME) AS "Import_Time"
-    , USER AS "Added_By"
-    , "Customer Experience" AS "Name"
+    CAST(NOW AS DATE)
+    , CAST(NOW() AS TIME)
+    , USER
+    , "Customer Experience"
 );
 
 INSERT INTO "Table"."Ref_Assessment_Type" (
@@ -51,21 +51,21 @@ INSERT INTO "Table"."Ref_Assessment_Type" (
     , "Question_Set"
     , "Name"
 ) VALUES (
-    CAST(NOW AS DATE) AS "Import_Date"
-    , CAST(NOW() AS TIME) AS "Import_Time"
-    , USER AS "Added_By"
-    , 1 AS "Question_Set"
-    , "Self Assessment" AS "Name"
+    CAST(NOW AS DATE)
+    , CAST(NOW() AS TIME)
+    , USER
+    , 1
+    , "Self Assessment"
 ), (
-    CAST(NOW AS DATE) AS "Import_Date"
-    , CAST(NOW() AS TIME) AS "Import_Time"
-    , USER AS "Added_By"
-    , 2 AS "Question_Set"
-    , "Self Assessment" AS "Name"
+    CAST(NOW AS DATE)
+    , CAST(NOW() AS TIME)
+    , USER
+    , 2
+    , "Self Assessment"
 ), (
-    CAST(NOW AS DATE) AS "Import_Date"
-    , CAST(NOW() AS TIME) AS "Import_Time"
-    , USER AS "Added_By"
-    , 2 AS "Question_Set"
-    , "Manager Assessment" AS "Name"
+    CAST(NOW AS DATE)
+    , CAST(NOW() AS TIME)
+    , USER
+    , 2
+    , "Manager Assessment"
 );
