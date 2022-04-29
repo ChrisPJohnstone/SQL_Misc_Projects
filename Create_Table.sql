@@ -15,7 +15,7 @@ CREATE TABLE "Table"."Ref_Question_Set" (
     , "Name" VARCHAR(100) NOT NULL
     , "Active" BOOLEAN NOT NULL
     , "Notes" VARCHAR(1000) NULL
-    , CONSTRAINT "Ref_Question_Set_Unique_Key" UNIQUE NONCLUSTERED ("Name")
+    , CONSTRAINT "Ref_Question_Set_Unique_Key" UNIQUE ("Name")
 );
 
 CREATE TABLE "Table"."Ref_Assessment_Type" (
@@ -28,7 +28,7 @@ CREATE TABLE "Table"."Ref_Assessment_Type" (
     , "Name" VARCHAR(100) NOT NULL
     , "Active" BOOLEAN NOT NULL
     , "Notes" VARCHAR(1000) NULL
-    , CONSTRAINT "Ref_Assessment_Type_Unique_Key" UNIQUE NONCLUSTERED ("Question_Set", "Name")
+    , CONSTRAINT "Ref_Assessment_Type_Unique_Key" UNIQUE ("Question_Set", "Name")
 );
 
 INSERT INTO "Table"."Ref_Question_Set" (
