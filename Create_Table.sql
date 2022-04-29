@@ -3,7 +3,7 @@ CREATE SCHEMA IF NOT EXISTS "Table";
 CREATE SCHEMA IF NOT EXISTS "View";
 CREATE SCHEMA IF NOT EXISTS "Proc";
 
---Drop tables in reverse order due to foreign key constraints
+-- --Drop tables in reverse order due to foreign key constraints
 DROP TABLE IF EXISTS "Table"."Ref_Assessment_Type";
 DROP TABLE IF EXISTS "Table"."Ref_Question_Set";
 
@@ -23,7 +23,7 @@ CREATE TABLE "Table"."Ref_Assessment_Type" (
     , "Import_Time" TIME NOT NULL
     , "Added_By" VARCHAR(100) NOT NULL
     , "Question_Set" INT NOT NULL
-    , CONSTRAINT "Ref_Assessment_Type_Question_Set_Key" FOREIGN KEY("Question_Set") REFERENCES "Ref_Question_Set"("Question_Set")
+    , CONSTRAINT "Ref_Assessment_Type_Question_Set_Key" FOREIGN KEY("Question_Set") REFERENCES "Table"."Ref_Question_Set"("Question_Set")
     , "Assessment_Type" INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY
     , "Name" VARCHAR(100) NOT NULL
     , "Active" BOOLEAN NOT NULL
@@ -41,13 +41,13 @@ INSERT INTO "Table"."Ref_Question_Set" (
     CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
-    , "Compliance"
+    , 'Compliance'
     , TRUE
 ), (
     CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
-    , "Customer Experience"
+    , 'Customer Experience'
     , TRUE
 );
 
@@ -63,20 +63,20 @@ INSERT INTO "Table"."Ref_Assessment_Type" (
     , CAST(NOW() AS TIME)
     , USER
     , 1
-    , "Self Assessment"
+    , 'Self Assessment'
     , TRUE
 ), (
     CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
     , 2
-    , "Self Assessment"
+    , 'Self Assessment'
     , TRUE
 ), (
     CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
     , 2
-    , "Manager Assessment"
+    , 'Manager Assessment'
     , TRUE
 );
