@@ -21,10 +21,10 @@ CREATE TABLE "Table"."Ref_Assessment_Type" (
     , "Import_Time" TIME NOT NULL
     , "Added_By" VARCHAR(100) NOT NULL
     , "Question_Set" INT NOT NULL
-    , CONSTRAINT FOREIGN KEY("Question_Set") REFERENCES "Ref_Question_Set"("Question_Set")
+    , CONSTRAINT "Ref_Assessment_Type_Question_Set_Key" FOREIGN KEY("Question_Set") REFERENCES "Ref_Question_Set"("Question_Set")
     , "Assessment_Type" INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY
     , "Name" VARCHAR(100) NOT NULL
-    , "Notes" NOT NULL
+    , "Notes" VARCHAR(1000) NULL
 );
 
 INSERT INTO "Table"."Ref_Question_Set" (
@@ -33,12 +33,12 @@ INSERT INTO "Table"."Ref_Question_Set" (
     , "Added_By"
     , "Name"
 ) VALUES (
-    CAST(NOW AS DATE)
+    CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
     , "Compliance"
 ), (
-    CAST(NOW AS DATE)
+    CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
     , "Customer Experience"
@@ -51,19 +51,19 @@ INSERT INTO "Table"."Ref_Assessment_Type" (
     , "Question_Set"
     , "Name"
 ) VALUES (
-    CAST(NOW AS DATE)
+    CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
     , 1
     , "Self Assessment"
 ), (
-    CAST(NOW AS DATE)
+    CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
     , 2
     , "Self Assessment"
 ), (
-    CAST(NOW AS DATE)
+    CAST(NOW() AS DATE)
     , CAST(NOW() AS TIME)
     , USER
     , 2
